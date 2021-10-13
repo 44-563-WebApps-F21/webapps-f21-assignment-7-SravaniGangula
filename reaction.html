@@ -12,11 +12,11 @@
 <body>
 
   <h2>Gangula Sravani Reddy reaction timer</h2>
-  <div id="target">Your time</div>
-  <div id="countdown">Count</div>
+  <div id="target" style="margin-left: 25px;">Your time</div>
+  <div id="countdown" style="margin-left: 25px;">Count</div>
 
-  <button type="button" class="btn btn-primary" onclick="startTime()">Start Timer</button>
-  <button type="button" class="btn btn-danger" onclick="recordReact()">React Now</button>
+  <button type="button" onclick="startTime()" style="margin-left: 25px;">Start Timer</button>
+  <button type="button"  onclick="recordReact()" style="margin-left: 10px;">React Now</button>
 
   
   <script> 
@@ -29,13 +29,14 @@ function recordReact() {
 function startTime() {
     myTime = undefined
     buttonTime = Date.now()
-    var countd=Math.floor(Math.random()*(10-2)+2)
-      for(let i=0;i<countd+1;i++){
-        var j=(countd-i)*1000;
-        var p=i;
-        setTimeout(() => {
-          document.getElementById("countdown").innerHTML = i;
-        }, j)
+   var countdown=Math.floor(Math.random()*(10-2)+2)
+   
+     for(let i=0;i<countdown+1;i++){
+     var j=(countdown-i)*1000;
+      var p=i;
+       setTimeout(() => {
+         document.getElementById("countdown").innerHTML = i;
+       }, j)
       }
 
       setTimeout(() => {
@@ -47,7 +48,7 @@ function startTime() {
           var elapsedTime = (-1) * (buttonTime - myTime);
           document.getElementById("target").innerHTML = "Time was "+elapsedTime+" ms";
         }
-      }, countd*1000)
+      }, countdown*1000)
     }
   </script>
 

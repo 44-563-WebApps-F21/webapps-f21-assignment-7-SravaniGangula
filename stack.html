@@ -27,10 +27,13 @@
 <body>
 	<h2>Gangula Sravani Reddy builds a stack</h2>
 
-	<input id="name" type="text"></input>
+	<input id="name" type="text" style="margin-bottom: 25px;"></input>
 
-	
+      
+
+
 		<div class="flex-container" id="target">
+
 		  <div class="stack">row item 1</div>   
 		  <div class="stack">row item 2</div>  
 		  <div class="stack">row item 3</div>  
@@ -39,6 +42,10 @@
 	<p> Press the button to create an new element of type div and then add it to the container.
 		</p>
 		<button onclick="makeNewDiv()">Push value</button>
+
+		<button onclick="popItem()">Pop</button>
+
+		<button onclick="zap()">Zap values</button>
 	
 	
 </body>
@@ -48,15 +55,36 @@
 		element.innerHTML = document.getElementById("name").value
 		element.className = "stack"
 
-		var Stack = document.getElementsByClassName("stack");
+		var stackItems = document.getElementsByClassName("stack");
+		document.getElementById('target').appendChild(element)			
+	}
+	function popItem(){
+		let element = document.createElement("div")
+		element.innerHTML = document.getElementById("name").value
+		element.className = "stack"
+		var stackItems = document.getElementsByClassName("stack");
+		if (stackItems.length >0 ){
+			stackItems[stackItems.length-1].remove();
+				
+			}
+		}	
+	function zap(){
+		let element = document.createElement("div")
+		element.innerHTML = document.getElementById("name").value
+		element.className = "stack"
+		var stackItems = document.getElementsByClassName("stack");
+		for(var item=0;item< stackItems.length;item++){
+			if(stackItems[item].innerHTML == element.innerHTML){
+				stackItems[item].remove();
+			}
+	}
+}
 		/* make the div and its text */
 	//	let element = document.createElement("p")
 	//	element.innerHTML = "an item after 3"
 	//	element.style.color = "orange"
 
 		/* add it to the container */
-		document.getElementById('target').appendChild(element)
-		
-	}
+
 </script>
 </html>	
