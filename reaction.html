@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Assignment7setTimeout</title>
+  <title>Reaction webpage</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -15,7 +15,7 @@
   <div id="target">Your time</div>
   <div id="countdown">Count</div>
 
-  <button type="button" class="btn btn-primary" >Start Timer</button>
+  <button type="button" class="btn btn-primary" onclick="startTime()">Start Timer</button>
   <button type="button" class="btn btn-danger" onclick="recordReact()">React Now</button>
 
   
@@ -26,17 +26,29 @@ function recordReact() {
   myTime = Date.now();
   console.log("Time : " + myTime);
 }
-  function buttonPress1() {
-    setTimeout(function(){
-      document.getElementById('target').style.color = "red"
-    }, 3000)
-  }
+function startTime() {
+    myTime = undefined
+    buttonTime = Date.now()
+    var countd=Math.floor(Math.random()*(10-2)+2)
+      for(let i=0;i<countd+1;i++){
+        var j=(countd-i)*1000;
+        var p=i;
+        setTimeout(() => {
+          document.getElementById("countdown").innerHTML = i;
+        }, j)
+      }
 
-  function buttonPress2() {
-    setTimeout(()=>{
-      document.getElementById('target').style.color = "red"
-    }, 3000)
-  }
+      setTimeout(() => {
+        if(myTime == undefined){
+          document.getElementById("target").innerHTML = "Too Slow";
+        }
+        
+        else{
+          var elapsedTime = (-1) * (buttonTime - myTime);
+          document.getElementById("target").innerHTML = "Time was "+elapsedTime+" ms";
+        }
+      }, countd*1000)
+    }
   </script>
 
 </body>
